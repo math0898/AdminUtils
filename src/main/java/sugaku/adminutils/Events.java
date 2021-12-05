@@ -1,11 +1,9 @@
 package sugaku.adminutils;
 
-import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,7 +17,6 @@ import org.bukkit.util.BoundingBox;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import java.util.function.Predicate;
 
 public class Events implements Listener {
 
@@ -50,8 +47,7 @@ public class Events implements Listener {
             if (event.getItem().getType() == Material.FLINT_AND_STEEL || event.getItem().getType() == Material.LAVA_BUCKET) {
                 assert event.getClickedBlock() != null;
                 Location l = event.getClickedBlock().getLocation();
-                if (event.getClickedBlock().getWorld().getNearbyEntities(new BoundingBox(l.getX() - 5, l.getY() - 5, l.getZ() - 5, l.getX() + 5, l.getY() + 5, l.getZ() + 5), new Predicate<Entity>() {
-                    @Override public boolean test(Entity entity) { return entity instanceof Player; }}).size() >= 2) {
+                if (event.getClickedBlock().getWorld().getNearbyEntities(new BoundingBox(l.getX() - 5, l.getY() - 5, l.getZ() - 5, l.getX() + 5, l.getY() + 5, l.getZ() + 5), entity -> entity instanceof Player).size() >= 2) {
                     event.setCancelled(true);
                     event.getPlayer().sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "AdminUtils"+ ChatColor.DARK_GRAY + "] " + ChatColor.GRAY + "There is another player nearby!");
                 }
@@ -67,7 +63,7 @@ public class Events implements Listener {
      */
     @EventHandler
     public void onPlayerLogin (PlayerLoginEvent event) {
-        Bukkit.getScheduler().runTaskLater(main.plugin, () -> handleOnPlayerLogin(event) , 10*20);
+        Bukkit.getScheduler().runTaskLater(AdminUtils.plugin, () -> handleOnPlayerLogin(event) , 10*20);
     }
 
     /**
@@ -79,9 +75,9 @@ public class Events implements Listener {
         LocalDateTime time = LocalDateTime.now();
         UUID uuid = event.getPlayer().getUniqueId();
         File f = new File("./plugins/AdminUtils/Inventories/" + uuid + "." + time.getMonthValue() + "-" + time.getDayOfMonth() + "-" + time.getYear());
-        main.console(ChatColor.GRAY + "Checking for: " + f.getPath());
-        if (f.exists()) { main.console(ChatColor.GREEN + "File found."); return; }
-        main.console(ChatColor.GOLD + "Backing up inventory of " + event.getPlayer().getName());
+        AdminUtils.console(ChatColor.GRAY + "Checking for: " + f.getPath());
+        if (f.exists()) { AdminUtils.console(ChatColor.GREEN + "File found."); return; }
+        AdminUtils.console(ChatColor.GOLD + "Backing up inventory of " + event.getPlayer().getName());
         Player player = Bukkit.getPlayer(uuid);
         assert player != null;
         InventoryManager.saveInventory(player, "" + time.getMonthValue() + "-" + time.getDayOfMonth() + "-" + time.getYear());

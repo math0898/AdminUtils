@@ -1,6 +1,5 @@
 package sugaku.adminutils;
 
-import com.google.common.collect.Multimap;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -24,8 +23,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static sugaku.adminutils.main.console;
-import static sugaku.adminutils.main.plugin;
+import static sugaku.adminutils.AdminUtils.console;
+import static sugaku.adminutils.AdminUtils.plugin;
 
 public class InventoryManager {
 
