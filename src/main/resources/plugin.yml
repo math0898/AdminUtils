@@ -1,0 +1,20 @@
+name: AdminUtils
+version: 1.0.0
+main: sugaku.adminutils.main
+api-version: 1.16
+authors: [ Sugaku ]
+website: https://www.youtube.com/c/sugaku0898
+prefix: "AdminUtils"
+description: A plugin used for admin utilities on the Darkstarmc SMP.
+permissions:
+  adminutils.*:
+    adminutils.admin:
+    adminutils.mod:
+    adminutils.builder:
+    adminutils.default:
+commands:
+  adminutils:
+    description: Serves as the main command to interact with the AdminUtils plugin.
+    usage: Hello
+    permission: adminutils.admin
+    permission-message: Unknown command. Type "/help" for help.
