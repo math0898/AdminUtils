@@ -1,4 +1,4 @@
-package sugaku.adminutils.commands;
+package io.github.math0898.adminutils.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

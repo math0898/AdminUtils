@@ -1,9 +1,9 @@
 name: AdminUtils
 version: 1.0.0
-main: sugaku.adminutils.main
-api-version: 1.16
+main: io.github.math0898.adminutils
+api-version: 1.17
 authors: [ Sugaku ]
-website: https://www.youtube.com/c/sugaku0898
+website: https://github.com/math0898/AdminUtils
 prefix: "AdminUtils"
 description: A plugin used for admin utilities on the Darkstarmc SMP.
 permissions:

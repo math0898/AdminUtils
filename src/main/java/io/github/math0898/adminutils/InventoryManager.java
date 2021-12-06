@@ -1,4 +1,4 @@
-package sugaku.adminutils;
+package io.github.math0898.adminutils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import sugaku.adminutils.commands.AbstractCommand;
+import io.github.math0898.adminutils.commands.AbstractCommand;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,8 +23,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static sugaku.adminutils.AdminUtils.console;
-import static sugaku.adminutils.AdminUtils.plugin;
+import static io.github.math0898.adminutils.AdminUtils.console;
+import static io.github.math0898.adminutils.AdminUtils.plugin;
 
 public class InventoryManager {
 
@@ -35,7 +35,6 @@ public class InventoryManager {
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void init() {
         console("Checking for required directories.");
-
         try {
             File container = new File("./plugins/AdminUtils/");
             if (!Files.exists(Paths.get(container.getPath()))) container.mkdir();

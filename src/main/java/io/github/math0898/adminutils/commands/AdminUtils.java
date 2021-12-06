@@ -1,4 +1,4 @@
-package sugaku.adminutils.commands;
+package io.github.math0898.adminutils.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import sugaku.adminutils.InventoryManager;
+import io.github.math0898.adminutils.InventoryManager;
 
 import java.util.*;
 
@@ -36,23 +36,23 @@ public class AdminUtils extends AbstractCommand implements CommandExecutor {
     }
 
     private void updateSubcommand(CommandSender sender) {
-        Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart"), 1400);
-        Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "kickall &8[&cAdminUtils&8] &7The server is updating. See you in a few!"), 1200);
-        Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> Bukkit.setWhitelist(false), 1399);
+        Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart"), 1400);
+        Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "kickall &8[&cAdminUtils&8] &7The server is updating. See you in a few!"), 1200);
+        Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> Bukkit.setWhitelist(false), 1399);
         Bukkit.setWhitelist(true);
-        AbstractCommand.send(sender, "You are restarting the server for an update.");
+        send(sender, "You are restarting the server for an update.");
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         //Register announcements
         for (Player p : players) {
-            AbstractCommand.send(p, "The server will restart in 60 seconds for an update!");
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "The server will restart in 30 seconds!"), 600);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "The server will restart in 15 seconds!"), 900);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "The server will restart in 5 seconds!"), 1100);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "Restarting in 4..."), 1120);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "Restarting in 3..."), 1140);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "Restarting in 2..."), 1160);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "Restarting in 1..."), 1180);
-            Bukkit.getScheduler().runTaskLater(sugaku.adminutils.AdminUtils.plugin, () -> AbstractCommand.send(p, "Server is restarting. See you in a few!"), 1200);
+            send(p, "The server will restart in 60 seconds for an update!");
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "The server will restart in 30 seconds!"), 600);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "The server will restart in 15 seconds!"), 900);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "The server will restart in 5 seconds!"), 1100);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "Restarting in 4..."), 1120);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "Restarting in 3..."), 1140);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "Restarting in 2..."), 1160);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "Restarting in 1..."), 1180);
+            Bukkit.getScheduler().runTaskLater(io.github.math0898.adminutils.AdminUtils.plugin, () -> send(p, "Server is restarting. See you in a few!"), 1200);
         }
     }
 

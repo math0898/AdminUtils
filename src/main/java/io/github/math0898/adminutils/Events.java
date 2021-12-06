@@ -1,4 +1,4 @@
-package sugaku.adminutils;
+package io.github.math0898.adminutils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

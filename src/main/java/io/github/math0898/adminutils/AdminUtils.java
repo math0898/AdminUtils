@@ -1,4 +1,4 @@
-package sugaku.adminutils;
+package io.github.math0898.adminutils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -64,6 +64,7 @@ public final class AdminUtils extends JavaPlugin {
         CommandManager.setup();
         Bukkit.getPluginManager().registerEvents(new Events(), this);
         InventoryManager.init();
+        AnnouncementManager.init();
         console("AdminUtils loaded successfully!", ChatColor.GREEN);
     }
 
