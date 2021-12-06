@@ -1,6 +1,6 @@
 name: AdminUtils
 version: 1.0.0
-main: io.github.math0898.adminutils
+main: io.github.math0898.adminutils.AdminUtils
 api-version: 1.17
 authors: [ Sugaku ]
 website: https://github.com/math0898/AdminUtils

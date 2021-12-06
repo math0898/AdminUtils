@@ -54,7 +54,7 @@ public class AnnouncementManager {
          */
         public static Announcement create (ConfigurationSection section) {
             if (section == null) return null;
-            String m = section.getString("message", "Message not defined");
+            String m = section.getString("message", "Message not defined").replace("&", "§");
             int frequency = section.getInt("frequency", 60);
             int offset = section.getInt("offset", new Random().nextInt() % frequency);
             return new Announcement(m, frequency, offset);
@@ -66,10 +66,10 @@ public class AnnouncementManager {
      */
     public static void init () {
         YamlConfiguration save = new YamlConfiguration();
-        File container = new File("/plugins/AdminUtils");
+        File container = new File("./plugins/AdminUtils");
         if (!container.exists()) //noinspection ResultOfMethodCallIgnored
             container.mkdir();
-        File file = new File("/plugins/AdminUtils/announcements.yml");
+        File file = new File("./plugins/AdminUtils/announcements.yml");
         if (!file.exists()) plugin.saveResource("announcements.yml", false);
         try {
             save.load(file);
@@ -87,7 +87,7 @@ public class AnnouncementManager {
      */
     public static void checkAnnouncements () {
         count++;
-        announcements.forEach((a) -> { if (a.frequency % (count - a.offset) == 0) a.send(); });
+        announcements.forEach((a) -> { if ((count - a.offset) % a.frequency == 0) a.send(); });
         Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, AnnouncementManager::checkAnnouncements, 20 * 60);
     }
 }
