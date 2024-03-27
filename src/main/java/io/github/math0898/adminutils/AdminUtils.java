@@ -63,6 +63,7 @@ public final class AdminUtils extends JavaPlugin {
         console("Loading Sugaku's AdminUtils Plugin...");
         CommandManager.setup();
         Bukkit.getPluginManager().registerEvents(new Events(), this);
+        Bukkit.getPluginManager().registerEvents(UpdateManager.getInstance(), this);
         InventoryManager.init();
         AnnouncementManager.init();
         console("AdminUtils loaded successfully!", ChatColor.GREEN);
