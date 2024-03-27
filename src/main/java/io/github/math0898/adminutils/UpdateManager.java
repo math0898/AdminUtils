@@ -81,7 +81,9 @@ public class UpdateManager implements Listener {
     public void onAsyncPlayerPreLogin (AsyncPlayerPreLoginEvent event){
         if(whitelistActive){
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, ChatColor.translateAlternateColorCodes('&', """
-                    &8[&cAdminUtils&8] &7The server is restarting.
+                    &8[&cAdminUtils&8]
+                    &7The server is restarting.
+                    &7
                     &7It may take up to a minute to shutdown,
                     &7and another minute or two to restart.
                     &7
